@@ -1,6 +1,7 @@
 import re
 
-lines = open("day2/input").readlines()
+with open("day2/input") as file:
+    puzzle = file.readlines()
 
 bag = [(12, "red"), (13, "green"), (14, "blue")]
 
@@ -19,7 +20,7 @@ def is_possible(grab, bag):
     return True
 
 answer = 0
-for line in lines:
+for line in puzzle:
     game = re.findall("(?:Game (\d+):)|(?: ([^;]+);?)", line)
     game_id = int(game[0][0])
     if all(is_possible(parse_grab(game[i][1]), bag) for i in range(1, len(game))):
