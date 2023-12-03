@@ -14,7 +14,6 @@ def parse_grab(grab):
 def is_possible(grab, bag):
     for color in grab:
         in_bag = [x for x, y in bag if y == color[1]]
-        if len(in_bag) == 0: return
         if color[0] > in_bag[0]:
             return False
     return True
